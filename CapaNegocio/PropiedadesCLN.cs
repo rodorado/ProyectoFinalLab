@@ -51,12 +51,17 @@ namespace CapaNegocio
         }
 
         //MODIFICAR CN
-
         public void modificarPropiedadesCN(int idPropiedad, double precio, string domicilioP, DateTime antiguedad, string tipo, int idEsp, int idCuit)
         {
             objPropiedadDB.modificarPropiedadesDB(idPropiedad, precio, domicilioP, antiguedad, tipo, idEsp, idCuit);
         }
 
+        //ELIMINAR CN
+
+        public void eliminarPropiedadesCN(int idPropiedad)
+        {
+            objPropiedadDB.eliminarPropiedades(idPropiedad);
+        }
 
     }
 }

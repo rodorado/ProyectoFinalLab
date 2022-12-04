@@ -19,15 +19,12 @@ namespace CapaPresentación
         private int idEsp;
         private double Precio;
         private DateTime Antiguedad;
-        //private string idPropiedad = null;
         private int indice;
-        private string precioProp;
         private DataTable miTabla;
         public frmPropiedades()
         {
             objPropiedadesCN = new PropiedadesCLN();
             indice = 0;
-            precioProp = "";
             miTabla = new DataTable();
             InitializeComponent();
         }
@@ -73,6 +70,7 @@ namespace CapaPresentación
             MostrarPropiedades();
         }
 
+       //FUNCIÓN PARA LIMPIAR LOS CAMPOS
         private void LimpiarTextBoxs()
         {
             txtAntiguedad.Clear();
@@ -82,7 +80,7 @@ namespace CapaPresentación
             txtCuit.Clear();
             txtEsp.Clear();
         }
-
+        //BOTÓN LIMPIAR
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarTextBoxs();
@@ -94,11 +92,17 @@ namespace CapaPresentación
 
         }
 
-        //HACER CLICK EN LAS CELDAS
+        //HACER CLICK EN LAS CELDAS PARA PASAR LOS PÁRAMETROS DE LA TABLA A LOS TEXBOX
         private void dgvPropiedades_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             indice = e.RowIndex;
-            precioProp = dgvPropiedades.Rows[indice].Cells[1].Value.ToString();
+            txtPrecio.Text = dgvPropiedades.CurrentRow.Cells["precio"].Value.ToString();
+            txtDomicilioP.Text = dgvPropiedades.CurrentRow.Cells["domicilioP"].Value.ToString();
+            txtAntiguedad.Text = dgvPropiedades.CurrentRow.Cells["antiguedad"].Value.ToString();
+            txtTipo.Text = dgvPropiedades.CurrentRow.Cells["tipo"].Value.ToString();
+            txtEsp.Text = dgvPropiedades.CurrentRow.Cells["idEsp"].Value.ToString();
+            txtCuit.Text = dgvPropiedades.CurrentRow.Cells["idCuit"].Value.ToString();
+            //Validación por si se selecciona mal una fila
             if (indice == -1)
             {
                 MessageBox.Show("Seleccione un fila válida");
@@ -110,51 +114,41 @@ namespace CapaPresentación
                     MessageBox.Show("Error, haga bien el click");
                 }
             }
-
         }
         //MODIFICAR
         private void btnModificar_Click(object sender, EventArgs e)
-        {
-            
-            /*if(dgvPropiedades.SelectedRows.Count > 0)
+        {  
+            if(dgvPropiedades.SelectedRows.Count > 0)
             {
-                txtPrecio.Text = dgvPropiedades.CurrentRow.Cells["precio"].Value.ToString();
-                txtDomicilioP.Text = dgvPropiedades.CurrentRow.Cells["domicilioP"].Value.ToString();
-                txtAntiguedad.Text = dgvPropiedades.CurrentRow.Cells["antiguedad"].Value.ToString();
-                txtTipo.Text = dgvPropiedades.CurrentRow.Cells["tipo"].Value.ToString();
-                txtEsp.Text = dgvPropiedades.CurrentRow.Cells["idEsp"].Value.ToString();
-                txtCuit.Text = dgvPropiedades.CurrentRow.Cells["idCuit"].Value.ToString();
-                idPropiedad = dgvPropiedades.CurrentRow.Cells["idPropiedad"].Value.ToString();
+               
+                Precio = Convert.ToInt32(txtPrecio.Text);
+                idCuit = Convert.ToInt32(txtCuit.Text);
+                idEsp = Convert.ToInt32(txtEsp.Text);
+                Antiguedad = Convert.ToDateTime(txtAntiguedad.Text);
+                objPropiedadesCN.modificarPropiedadesCN(Convert.ToInt32(dgvPropiedades.Rows[indice].Cells[0].Value), Precio, txtDomicilioP.Text, Antiguedad, txtTipo.Text, idEsp, idCuit);
+                MessageBox.Show("Los cambios se modificaron correctamente");
             }
             else
             {
                 MessageBox.Show("Seleccione una fila a modificar");
-            }*/
-            if (txtPrecio.Text == string.Empty || txtDomicilioP.Text == string.Empty || txtAntiguedad.Text == string.Empty || txtTipo.Text == string.Empty || txtEsp.Text == string.Empty || txtCuit.Text == string.Empty)
+            }
+            LimpiarTextBoxs();
+            MostrarPropiedades();
+        }
+        //ELIMINAR
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult opcion = MessageBox.Show("¿Desea eliminar la propiedad?", "Eliminar producto", MessageBoxButtons.YesNo);
+            if (opcion == DialogResult.Yes)
             {
-                MessageBox.Show("Debe completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                objPropiedadesCN.eliminarPropiedadesCN(Convert.ToInt32(dgvPropiedades.Rows[indice].Cells[0].Value));
+                MessageBox.Show("Propiedad eliminada con éxito", "Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LimpiarTextBoxs();
             }
             else
             {
-                try
-                {
-                    Precio = Convert.ToInt32(txtPrecio.Text);
-                    idCuit = Convert.ToInt32(txtCuit.Text);
-                    idEsp = Convert.ToInt32(txtEsp.Text);
-                    Antiguedad = Convert.ToDateTime(txtAntiguedad.Text);
-                    objPropiedadesCN.modificarPropiedadesCN(Convert.ToInt32(dgvPropiedades.Rows[indice].Cells[0].Value), Precio, txtDomicilioP.Text, Antiguedad, txtTipo.Text, idEsp, idCuit);
-                    MessageBox.Show("Los cambios se modificaron correctamente");
-                }
-                catch
-                {
-                    MessageBox.Show("Debe ingresar los tipos de datos correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                
+                MessageBox.Show("Operación cancelada", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            LimpiarTextBoxs();
-            //btnAgregar.Enabled = true;
-            //btnEliminar.Enabled = false;
             MostrarPropiedades();
         }
     }

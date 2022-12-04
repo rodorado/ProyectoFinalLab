@@ -73,5 +73,18 @@ namespace CapaDatos
             comando.ExecuteNonQuery();
             objConexionCAD.cerrarConexion();
         }
+
+        //ELIMINAR
+        public void eliminarPropiedades(int idPropiedad)
+        {
+            comando.Connection = objConexionCAD.abrirConeccion();
+            comando.CommandText = "eliminarPropiedad";
+            comando.CommandType = CommandType.StoredProcedure;
+            comando.Parameters.Clear();
+            //Cargar en sql la propiedad a eliminar
+            comando.Parameters.AddWithValue("@idPropiedad", idPropiedad);
+            comando.ExecuteNonQuery();
+            objConexionCAD.cerrarConexion();
+        }
     }
 }
