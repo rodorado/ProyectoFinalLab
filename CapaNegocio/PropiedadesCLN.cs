@@ -13,8 +13,6 @@ namespace CapaNegocio
         private DataTable miTabla;
         private PropiedadesCAD objPropiedadDB;
 
-
-
         public PropiedadesCLN()
         {
             objPropiedadDB = new PropiedadesCAD();

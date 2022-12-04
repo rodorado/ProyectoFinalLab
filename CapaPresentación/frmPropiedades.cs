@@ -21,11 +21,13 @@ namespace CapaPresentación
         private DateTime Antiguedad;
         private int indice;
         private DataTable miTabla;
+        private frmEspecificaciones frmEsp;
         public frmPropiedades()
         {
             objPropiedadesCN = new PropiedadesCLN();
             indice = 0;
             miTabla = new DataTable();
+            frmEsp = new frmEspecificaciones();
             InitializeComponent();
         }
 
@@ -150,6 +152,19 @@ namespace CapaPresentación
                 MessageBox.Show("Operación cancelada", "Cancelar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             MostrarPropiedades();
+        }
+        //BOTON PARA AGREGAR UNA ESPECIFICACIÓN
+        private void btnEspecificaciones_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmEsp.ShowDialog();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

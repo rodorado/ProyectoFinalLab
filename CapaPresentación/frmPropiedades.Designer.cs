@@ -57,7 +57,7 @@
             // 
             this.PROPIEDADES.AutoSize = true;
             this.PROPIEDADES.Font = new System.Drawing.Font("Roboto Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.PROPIEDADES.Location = new System.Drawing.Point(231, 21);
+            this.PROPIEDADES.Location = new System.Drawing.Point(287, 19);
             this.PROPIEDADES.Name = "PROPIEDADES";
             this.PROPIEDADES.Size = new System.Drawing.Size(114, 19);
             this.PROPIEDADES.TabIndex = 0;
@@ -173,7 +173,7 @@
             this.dgvPropiedades.Location = new System.Drawing.Point(222, 61);
             this.dgvPropiedades.Name = "dgvPropiedades";
             this.dgvPropiedades.RowTemplate.Height = 25;
-            this.dgvPropiedades.Size = new System.Drawing.Size(379, 224);
+            this.dgvPropiedades.Size = new System.Drawing.Size(457, 224);
             this.dgvPropiedades.TabIndex = 13;
             this.dgvPropiedades.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPropiedades_CellClick);
             this.dgvPropiedades.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPropiedades_CellContentClick);
@@ -182,7 +182,7 @@
             // 
             this.btnAgregar.BackColor = System.Drawing.SystemColors.Info;
             this.btnAgregar.Font = new System.Drawing.Font("Roboto Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAgregar.Location = new System.Drawing.Point(160, 305);
+            this.btnAgregar.Location = new System.Drawing.Point(241, 305);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(115, 39);
             this.btnAgregar.TabIndex = 14;
@@ -194,7 +194,7 @@
             // 
             this.btnModificar.BackColor = System.Drawing.SystemColors.Info;
             this.btnModificar.Font = new System.Drawing.Font("Roboto Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnModificar.Location = new System.Drawing.Point(320, 305);
+            this.btnModificar.Location = new System.Drawing.Point(404, 305);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(115, 39);
             this.btnModificar.TabIndex = 15;
@@ -206,7 +206,7 @@
             // 
             this.btnEliminar.BackColor = System.Drawing.SystemColors.Info;
             this.btnEliminar.Font = new System.Drawing.Font("Roboto Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEliminar.Location = new System.Drawing.Point(473, 305);
+            this.btnEliminar.Location = new System.Drawing.Point(564, 305);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(115, 39);
             this.btnEliminar.TabIndex = 16;
@@ -230,12 +230,13 @@
             // 
             this.btnEspecificaciones.BackColor = System.Drawing.SystemColors.Info;
             this.btnEspecificaciones.Font = new System.Drawing.Font("Roboto Black", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEspecificaciones.Location = new System.Drawing.Point(488, 19);
+            this.btnEspecificaciones.Location = new System.Drawing.Point(548, 19);
             this.btnEspecificaciones.Name = "btnEspecificaciones";
             this.btnEspecificaciones.Size = new System.Drawing.Size(113, 36);
             this.btnEspecificaciones.TabIndex = 18;
             this.btnEspecificaciones.Text = "Agregar Especificaciones";
             this.btnEspecificaciones.UseVisualStyleBackColor = false;
+            this.btnEspecificaciones.Click += new System.EventHandler(this.btnEspecificaciones_Click);
             // 
             // pictureBox1
             // 
@@ -255,7 +256,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(613, 400);
+            this.ClientSize = new System.Drawing.Size(691, 367);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnEspecificaciones);
             this.Controls.Add(this.btnLimpiar);
@@ -277,7 +278,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PROPIEDADES);
             this.Name = "frmPropiedades";
-            this.Text = "frmPropiedades";
+            this.Text = "Propiedades";
             this.Load += new System.EventHandler(this.frmPropiedades_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPropiedades)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
